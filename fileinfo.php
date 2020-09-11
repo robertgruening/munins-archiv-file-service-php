@@ -14,7 +14,7 @@ if (!file_exists($rootPath.$_GET["relativePath"]))
 }
 
 $fileInfo = array();
-$fileInfo["url"] = "http://10.0.0.1/munins-archiv-file-service/fileInfo/".$_GET["relativePath"];
+$fileInfo["relativePath"] = $_GET["relativePath"];
 $fileInfo["size"] = filesize($rootPath.$_GET["relativePath"]);
 $fileInfo["name"] = basename($rootPath.$_GET["relativePath"]);
 $fileInfo["extension"] = pathinfo($rootPath.$_GET["relativePath"], PATHINFO_EXTENSION);
