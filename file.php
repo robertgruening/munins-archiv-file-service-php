@@ -1,5 +1,5 @@
 <?php
-if (!isset($_GET["relativeFilePath"]))
+if (!isset($_GET["relativePath"]))
 {
 	http_response_code(404);
 	return;
