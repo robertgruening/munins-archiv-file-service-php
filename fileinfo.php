@@ -13,6 +13,12 @@ if (!file_exists($rootPath.$_GET["relativePath"]))
 	return;
 }
 
+if (!is_file($rootPath.$_GET["relativePath"])) 
+{
+	http_response_code(404);
+	return;
+}
+
 $fileInfo = array();
 $fileInfo["relativePath"] = $_GET["relativePath"];
 $fileInfo["size"] = filesize($rootPath.$_GET["relativePath"]);
