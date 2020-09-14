@@ -13,6 +13,12 @@ if (!file_exists($rootPath.$_GET["relativePath"]))
 	return;
 }
 
+if (!is_dir($rootPath.$_GET["relativePath"])) 
+{
+	http_response_code(404);
+	return;
+}
+
 $dirInfo = array();
 $dirInfo["relativePath"] = $_GET["relativePath"];
 $dirInfo["creationDate"] = filectime($rootPath.$_GET["relativePath"]);
