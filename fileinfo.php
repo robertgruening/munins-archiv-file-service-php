@@ -24,7 +24,7 @@ $fileInfo["relativePath"] = $_GET["relativePath"];
 $fileInfo["size"] = filesize(ROOT_DIR.$_GET["relativePath"]);
 $fileInfo["name"] = basename(ROOT_DIR.$_GET["relativePath"]);
 $fileInfo["extension"] = pathinfo(ROOT_DIR.$_GET["relativePath"], PATHINFO_EXTENSION);
-$fileInfo["creationDate"] = filectime(ROOT_DIR.$_GET["relativePath"]);
-$fileInfo["lastModifiedDate"] = filemtime(ROOT_DIR.$_GET["relativePath"]);
+$fileInfo["creationDate"] = date("c", filectime(ROOT_DIR.$_GET["relativePath"]));
+$fileInfo["lastModifiedDate"] = date("c", filemtime(ROOT_DIR.$_GET["relativePath"]));
 
 echo json_encode($fileInfo); 
