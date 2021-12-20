@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="jquery.min.js"></script>
+	</head>
+	<body>
+		<input type="file" id="file"/>
+		<input type="button" id="upload" value="OK" />
+		<script>
+			$(function() {
+				$("#upload").click(uploadFile);
+			});
+
+			function uploadFile() {
+				let formData = new FormData();
+				let file = $("#file")[0].files[0];
+				formData.append("file", file);
+				
+				$.ajax(
+				{
+					type: "POST",
+					url: "../file.php?relativePath=test/eins/zwei/dummy.jpg",
+					contentType: false,
+					cache: false,
+					processData: false,
+					data: formData,
+					success: function (data, textStatus, jqXHR) {
+						console.info("success\n");
+						console.log(data);
+					},
+					error: function (jqXHR, textStatus, errorThrown) {
+						console.error("error");
+						console.log(jqXHR);
+					}
+				});
+			}
+		</script>
+	</body>
+</html>
